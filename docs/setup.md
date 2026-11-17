@@ -25,16 +25,18 @@ python -m pip install --no-index --find-links wheelhouse -r requirements.txt
 ## 入力
 
 * **BINファイル**：タブ区切り、ID＋37,000列。共通の `reference/BinTable_Header.tsv` と同じ軸・強度スケールを使います。`--format header` は1行目のppmを照合、`raw8` は先頭8行を読み飛ばし、`none` はヘッダーなしとして読みます。
-* **基準分布**：同梱の `config/reference_stats.tsv` を既定で使用します。全50項目の平均・標本SDをµM、小数2桁で保持しています。TCN000005は18.42／5.56、TCN000042 v6は2.50／1.08です。別の統計表を指定する場合のみ、下の3列のTSVを用意して `--reference-stats` に渡します。
+* **基準分布**：同梱の `config/reference_stats.tsv` を既定で使用します。全50項目の平均・標本SDをµM、小数2桁で保持しています。別の統計表を指定する場合のみ、下の3列のTSVを用意して `--reference-stats` に渡します。
 
 ```text
 TCN	mean_uM	sd_uM
 ```
 
 * **バッチ対応表**：`SampleID` と `BatchID` の2列のTSV。
-* **バッチ設定**：各バッチのTCN000042基準ピーク位置。人工データ生成後の `runs/synthetic_demo/input/groups.json` に設定形式の例があります。
+* **バッチ設定**：各バッチのN,N-Dimethylglycine（TCN000042）の基準ピーク位置。人工データ生成後の `runs/synthetic_demo/input/groups.json` に設定形式の例があります。
 
-TCN000042の `tcn42_reference_column` は、元v6処理の列座標（**ID列=0、最初のBIN=1**）です。人が数えるTSV列番号より1小さい値を設定します。基準位置は各バッチのスペクトルを目視確認して決めます。以降のモード判定と濃度計算は自動です。
+`tcn42_reference_column` は、入力TSVの列を0から数えた位置（**ID列=0、最初のBIN=1**）です。モデル一覧の1始まりのTSV列番号より1小さい値を設定します。基準位置は各バッチのスペクトルを目視確認して決めます。以降のピークパターンの判定、特徴量調整、濃度計算は自動です。
+
+モデル一覧のBIN領域は、コードではIDを除くスペクトルの0始まりインデックスで保持します。対応式は `TSV列番号 = BINインデックス + 2` です。
 
 ## 一括実行
 
@@ -60,7 +62,7 @@ python scripts/check_run.py runs/cohort/quantified runs/cohort/filtered
 | `filtered/mask_flags.tsv` | 除外段階と理由 |
 | 各段階の `run.json` | 完了状態、件数、入力・出力のハッシュ |
 
-入力IDは既定ではそのまま保持します。元ファイル名から末尾IDを取り出す既存規則を使う場合は `--id-mode legacy` を追加し、対応表も変換後IDに揃えます。TCN000042の数値フィットエラーをNAとして継続する場合だけ `--on-fit-error na` を追加します。
+入力IDは既定ではそのまま保持します。ピークフィッティングの数値エラーをNAとして継続する場合だけ `--on-fit-error na` を追加します。
 
 ## 指定バッチへの補正
 

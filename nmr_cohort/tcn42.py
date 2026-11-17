@@ -1,4 +1,4 @@
-"""Mode-dependent peak-height extraction for the single TCN000042 v6 model."""
+"""Reference-guided peak-height extraction for N,N-dimethylglycine."""
 import bisect
 import csv
 from itertools import combinations
@@ -10,21 +10,21 @@ from scipy.signal import find_peaks
 from . import core
 
 def roi_columns(axis, roi):
-    """Original file columns, not zero-based spectrum offsets; stop is exclusive."""
+    """Input TSV columns with ID at zero; stop is exclusive."""
     high, low = roi
     if not axis[0] >= high > low >= axis[-1]:
         raise ValueError("TCN42 ROI must be covered by the descending axis")
     start = len(axis) - bisect.bisect_right(axis[::-1], high)
     stop = len(axis) - bisect.bisect_left(axis[::-1], low) + 2
     if start < 1 or stop > len(axis) + 1:
-        raise ValueError("TCN42 legacy ROI endpoints fall outside spectral columns")
+        raise ValueError("TCN42 ROI endpoints fall outside spectral columns")
     return start, stop
 
 def four_peaks(indices):
     for comb in combinations(indices, 4):
         if all(abs(d - target) <= tol for d, target, tol in
                zip(np.diff(comb), (27, 76, 27), (2, 7, 2))):
-            return list(comb)  # first match, NOT a newly optimized quartet
+            return list(comb)  # Use the first matching four-peak pattern.
     candidates = []
     for distances, tolerances, missing in [((27, 103), (2, 9), 3),
                                             ((27, 76), (2, 7), 4),
@@ -49,7 +49,7 @@ def gaussian_fit(section, guess):
     return [guess[0], *fitted[1:4]]
 
 def double_gaussian(x, baseline, height1, center1, width1, height2, center2, width2):
-    # Both terms include baseline in the original. Preserve this convention.
+    # Each Gaussian term includes the baseline parameter.
     return (gaussian(x, baseline, height1, center1, width1) +
             gaussian(x, baseline, height2, center2, width2))
 
@@ -65,16 +65,16 @@ def double_gaussian_fit(section, guess):
 
 def validate_reference(reference, start, stop):
     if isinstance(reference, bool) or not isinstance(reference, (int, np.integer)):
-        raise ValueError("reference_pos must be an integer original-file column")
+        raise ValueError("reference_pos must be an integer input-TSV column (ID=0)")
     if reference-21 < start or reference+21 >= stop:
         raise ValueError("reference_pos +/- 21 must lie within the extracted ROI")
 
 def extract_height(section, reference):
-    """One float64 spectrum ROI, indexed by consecutive original TSV columns."""
+    """One float64 spectrum ROI, indexed by consecutive input TSV columns (ID=0)."""
     start, stop = int(section.index[0]), int(section.index[-1])+1
     validate_reference(reference, start, stop)
     if list(section.index) != list(range(start, stop)) or not np.isfinite(section.values).all():
-        raise ValueError("Expected finite values on consecutive original file columns")
+        raise ValueError("Expected finite values on consecutive input TSV columns")
     peaks, _ = find_peaks(section, height=section.quantile(0.75), distance=10)
     near = section.loc[reference-21:reference+21]
     sub, _ = find_peaks(near, height=near.max()*0.35, distance=2)
@@ -123,7 +123,7 @@ def extract_height(section, reference):
     return result
 
 def spectra_roi(path, axis, fmt, start, stop):
-    """Check the complete row width, then use the original pandas float parser.
+    """Check the complete row width, then use the pandas C float parser.
 
     A Python float()/round-trip parser can change the last bits of the feature
     and hence the nonlinear fit. Keep pandas' default C-parser conversion.

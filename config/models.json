@@ -819,7 +819,7 @@
         "high": 2.96,
         "low": 2.895
       },
-      "selector": "v6",
+      "selector": "reference_guided",
       "slope": 4274.26198283,
       "intercept": 0.09181425196680193,
       "bin_start": 25295,

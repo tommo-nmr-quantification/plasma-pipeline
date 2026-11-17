@@ -71,7 +71,7 @@ def predict(args):
             raise ValueError('Missing batch assignment for ' + ident)
         return membership[ident]
     try:
-        # The v6 amplitude fit retains the original pandas C float parser.
+        # Peak-amplitude fitting uses the pandas C float parser.
         # Other models use float64 Python conversion and serial summation.
         m42 = next(m for m in models if m['tcn'] == 'TCN000042')
         start, stop = m42['bin_start'] + 1, m42['bin_end'] + 2

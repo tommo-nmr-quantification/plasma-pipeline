@@ -80,7 +80,7 @@ class QuantificationTests(unittest.TestCase):
             self.assertGreaterEqual(self.axis[b],model['roi_ppm']['low'])
             self.assertLessEqual(self.axis[a],model['roi_ppm']['high'])
 
-    def test_all_five_v6_modes_and_unresolved(self):
+    def test_peak_overlap_modes_and_unresolved(self):
         self.assertEqual(self.report['tcn42_modes'],{'isolated':1,'overlap3_subtraction':1,
             'overlap3_partial':1,'overlap4_subtraction':1,'overlap4_partial':1,'unresolved':1})
         _,diag=core.read_table(self.root/'predicted/tcn42_diagnostics.tsv',['SampleID'])

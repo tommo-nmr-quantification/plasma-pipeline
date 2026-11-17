@@ -1,34 +1,34 @@
 # ToMMo NMR Quantification
 
-A common pipeline for converting plasma NMR BIN spectra into a curated concentration table (µM).
+A pipeline for quantifying **50 plasma metabolites** from NMR BIN spectra and producing a curated concentration table in µM.
 
-**BIN columns → features → frozen models → reference 10SD exclusion → low-value exclusion.**
+**BIN spectra → metabolite-specific features → concentration estimates → designated batch adjustments → 10SD exclusion → low-value exclusion.**
 
-[日本語](README.ja.md) · [Run instructions](docs/setup.md) · [All 50 column/model definitions](config/model_columns.tsv) · [Compound-specific adjustments](docs/curation.md)
+[日本語](README.ja.md) · [Run instructions](docs/setup.md) · [All 50 model definitions](config/model_columns.tsv) · [Feature and batch adjustments](docs/curation.md)
 
-## Calculation
+## Quantification
 
-Every input row contains an ID followed by 37,000 spectral values on the supplied [ppm axis](reference/BinTable_Header.tsv). All compounds use inclusive start/end BIN indices from one [model catalogue](config/models.json):
+Each input row contains a sample ID and 37,000 spectral intensities on the supplied [ppm axis](reference/BinTable_Header.tsv). Input spectra must use the same axis and intensity scale as the model inputs.
 
-```python
-region = spectrum[bin_start:bin_end + 1]
-feature = max(region)                 # peak height
-# or feature = serial_sum(region)    # BIN integral, without a ppm multiplier
-concentration = slope * feature + intercept
-```
+For each metabolite, the pipeline selects the specified spectral region and applies its corresponding model:
 
-The [column table](config/model_columns.tsv) gives the actual first/last TSV columns, ppm endpoints, feature and coefficients for every compound. **TSV columns are numbered from 1, including the ID column.** In the code, the spectral vector excludes the ID and starts at index 0: `TSV column = BIN index + 2`. Both endpoints are included.
+- **Linear regression for 46 metabolites**, using a BIN intensity sum, peak height, or an adjusted peak-height feature.
+- **Multilayer perceptrons (MLPs) for four metabolites**: methionine, glycerol, valine and alanine, using the selected spectral intensities as input.
 
-There are 45 ordinary scalar linear models, four frozen MLPs (TCN000007/24/32/34), and the TCN000042 v6 model. Succinate subtracts a reference-region contribution before regression. TCN000042 uses a batch-specific reference peak to adjust its feature automatically, followed by one fixed regression. MLP weights are included; inference does not retrain models.
+For a linear model, `concentration = slope × feature + intercept`. The BIN intensity sum is calculated without an additional ppm-width factor. Where required, feature extraction accounts for reference signals, peak displacement or overlapping signals. Models are applied with the supplied coefficients or weights; prediction does not retrain them.
 
-## Filtering
+The [model table](config/model_columns.tsv) lists the method, input columns, ppm endpoints, feature and coefficients or weight file for every metabolite. TSV columns are numbered from **1, including the sample ID column**, and both region endpoints are included. Executable definitions are stored in [models.json](config/models.json).
 
-After any designated batch correction, apply the following rules **in order**:
+## Data curation
 
-1. Set a concentration to `NA` when it is strictly outside the fixed reference `mean ± 10 × SD` for that metabolite. Values at the boundary are retained.
-2. Set a remaining concentration to `NA` when it is at or below the metabolite's [operational reporting cutoff](config/reporting_cutoffs.json).
+Selected batches can receive configured spectral-region adjustments or additive median corrections. Batch assignments and settings are supplied explicitly; see [adjustments](docs/curation.md).
 
-The default [reference table](config/reference_stats.tsv) supplies all 50 means and SDs in µM at the reported two-decimal precision. These stored values define the exclusion bounds; they are not recalculated from the incoming samples. Existing missing values stay missing. Outputs retain the table after 10SD filtering, the final table and per-stage exclusion flags.
+After any designated concentration correction, the pipeline applies these rules in order:
+
+1. Set values strictly outside the metabolite's fixed reference **mean ± 10 × SD** to `NA`. Values at the boundary are retained.
+2. Set remaining values at or below the metabolite's [operational reporting cutoff](config/reporting_cutoffs.json) to `NA`.
+
+The [reference table](config/reference_stats.tsv) provides the means and SDs; they are not estimated from the incoming samples. Intermediate tables and exclusion flags record each stage.
 
 ## Run
 
@@ -47,7 +47,7 @@ python -m nmr_cohort run \
   --out runs/cohort
 ```
 
-See [setup](docs/setup.md) for the input tables and optional frozen batch offsets. Synthetic examples contain no cohort observations. Coefficients retain their supplied precision; calculations use float64, with rounding only in the separate display table. Model-development and performance details belong to the accompanying manuscript.
+See [run instructions](docs/setup.md) for required inputs and optional batch corrections. The example uses synthetic spectra. Calculations use float64; rounding is confined to a separate display table.
 
 ## Citation
 

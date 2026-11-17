@@ -1,25 +1,34 @@
-# Compound-specific processing notes
+# Feature extraction and batch adjustments
 
-The standard models share one column/feature catalogue. The following records summarize additional processing choices found in the cohort workflow. Historical or group-specific adjustments are associated with their designated processing versions and sample groups.
+The [model table](../config/model_columns.tsv) describes all 50 metabolites using the same columns. `linear_regression` applies the listed slope and intercept to a scalar feature; `multilayer_perceptron` applies the supplied network weights to a spectral vector.
 
-| Compound | Recorded adjustment |
+| Feature | Calculation |
 |---|---|
-| TCN000001 Succinate | Subtract one fifth of a reference-region peak height before regression; included in the standard feature definition. |
-| TCN000004 Formate | Exclusion of review-selected observations. |
-| TCN000005 2-Aminobutyrate | Updated peak-height calibration; included in the standard catalogue. |
-| TCN000014 Cysteine | Revision and expansion of the integration region. |
-| TCN000015 Glutamate | Alternative integration region for a selected processing group. |
-| TCN000017 Asparagine | Historical concentration recalibration and review-based exclusions in designated groups. |
-| TCN000021 Ornithine | Revision of the peak-height region in the main processing route. |
-| TCN000025 Histidine | Alternative peak-height region and review-based exclusions for selected groups. |
-| TCN000028 Serine | Shifted integration region for a selected group; review of high concentrations. |
-| TCN000030 Threonine | Additive median correction between processing groups. |
-| TCN000032 Valine / TCN000034 Alanine | MLP predictions selected for the final integrated table. |
-| TCN000033 Glycine | Alternative integration region for a selected processing group. |
-| TCN000035 Glutamine | Narrowed peak-height region for a selected processing group. |
-| TCN000042 N,N-Dimethylglycine | Manually assigned group reference peak, automated interference adjustment and one shared v6 regression. |
-| TCN000043 Uridine | Alternative peak-height region for a selected processing group. |
+| `sum` | Sum of BIN intensities within the specified columns, without an additional ppm-width factor. |
+| `max` | Maximum BIN intensity within the specified columns. |
+| `max_minus_reference` | Peak height minus a scaled reference-region peak height. |
+| `adjusted_peak_height` | Reference-guided peak detection and adjustment for overlapping signals. |
+| `vector` | Selected spectral intensities supplied to an MLP. |
 
-For additive median correction: `corrected = predicted + median(reference group) − median(target group)`. Offsets are frozen from the designated population before application. Only designated groups receive a region change or correction; the standard pipeline does not infer group membership from sample IDs.
+For scalar features, `concentration = slope × feature + intercept`. Input regions, coefficients and weight files are recorded per metabolite.
 
-The executable workflow applies the current model catalogue, explicitly supplied batch settings, reference 10SD exclusion and operational low-value cutoffs. Review-based decisions and historical recalibrations are recorded here as processing history. Sample-to-batch mappings and the relevant processing settings accompany approved data requests.
+## Signal adjustments
+
+Succinate uses a reference-region contribution in its feature definition. N,N-dimethylglycine uses a reference peak position selected by inspecting spectra for each processing batch. Peak-pattern detection and overlap adjustment then produce a peak-height feature for one shared linear regression. The reference setting is supplied as an input; subsequent feature extraction and prediction are automated.
+
+## Batch-specific settings
+
+For designated processing groups, additional settings can address shifted peaks or differences in the concentration distribution:
+
+| Setting | Application |
+|---|---|
+| Spectral-region override | Change the selected columns for the specified metabolite and batch. |
+| Additive median correction | Apply a fixed concentration offset estimated from designated reference and target groups; threonine is an example in this cohort workflow. |
+
+The additive correction is:
+
+`corrected = predicted + median(reference group) − median(target group)`
+
+Offsets are estimated from the designated calibration groups and stored before application. Batch membership and correction settings are supplied explicitly. This adjustment assumes that the designated median difference represents a technical offset; it is not estimated automatically from each new input subset.
+
+Batch corrections precede reference-distribution 10SD exclusion and operational low-value exclusion. Sample-to-batch mappings and applicable processing settings accompany cohort data provided through the data-request process. See [run instructions](setup.md) for the configuration interface.

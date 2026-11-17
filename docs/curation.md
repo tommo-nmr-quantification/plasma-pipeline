@@ -1,5 +1,7 @@
 # Feature extraction and batch adjustments
 
+The [metabolite-specific curation record](curation_log.md) summarizes manual review and the resulting feature, calibration and exclusion adjustments during dataset preparation.
+
 The [model table](../config/model_columns.tsv) describes all 50 metabolites using the same columns. `linear_regression` applies the listed slope and intercept to a scalar feature; `multilayer_perceptron` applies the supplied network weights to a spectral vector.
 
 | Feature | Calculation |

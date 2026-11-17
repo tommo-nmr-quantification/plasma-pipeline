@@ -1,0 +1,984 @@
+{
+  "schema_version": 1,
+  "release": "50-metabolites-2026-11",
+  "unit": "uM",
+  "axis_bin_n": 37000,
+  "axis_sha256": "087b72787e8b9ab9cd5bf4fa43fd825e44bd72d429c3ffd775eb42b736086d29",
+  "models": [
+    {
+      "tcn": "TCN000001",
+      "name": "Succinate",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "max_minus_reference",
+      "roi_ppm": {
+        "high": 2.395,
+        "low": 2.39
+      },
+      "selector": "bracketed",
+      "slope": 7689.264211191969,
+      "intercept": 0.0,
+      "bin_start": 27388,
+      "bin_end": 27407,
+      "actual_ppm_high": 2.39503,
+      "actual_ppm_low": 2.3899,
+      "bin_n": 20,
+      "reference_roi": {
+        "high": 1.2,
+        "low": 1.18
+      },
+      "reference_divisor": 5.0
+    },
+    {
+      "tcn": "TCN000002",
+      "name": "Acetone",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "sum",
+      "roi_ppm": {
+        "high": 2.224525,
+        "low": 2.221285
+      },
+      "selector": "bracketed",
+      "slope": 1158.3620328823224,
+      "intercept": 0.0,
+      "bin_start": 28019,
+      "bin_end": 28032,
+      "actual_ppm_high": 2.22466,
+      "actual_ppm_low": 2.22115,
+      "bin_n": 14
+    },
+    {
+      "tcn": "TCN000003",
+      "name": "3-Hydroxyisobutyrate",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "sum",
+      "roi_ppm": {
+        "high": 1.067575,
+        "low": 1.064335
+      },
+      "selector": "bracketed",
+      "slope": 2854.9112944232224,
+      "intercept": 0.0,
+      "bin_start": 32304,
+      "bin_end": 32317,
+      "actual_ppm_high": 1.06771,
+      "actual_ppm_low": 1.0642,
+      "bin_n": 14
+    },
+    {
+      "tcn": "TCN000004",
+      "name": "Formate",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "sum",
+      "roi_ppm": {
+        "high": 8.448295,
+        "low": 8.445055
+      },
+      "selector": "bracketed",
+      "slope": 8199.654357085386,
+      "intercept": 0.0,
+      "bin_start": 5709,
+      "bin_end": 5722,
+      "actual_ppm_high": 8.44843,
+      "actual_ppm_low": 8.44492,
+      "bin_n": 14
+    },
+    {
+      "tcn": "TCN000005",
+      "name": "2-Aminobutyrate",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "max",
+      "roi_ppm": {
+        "high": 0.972,
+        "low": 0.9687
+      },
+      "selector": "inclusive",
+      "slope": 17178.39,
+      "intercept": -2.587192,
+      "bin_start": 32659,
+      "bin_end": 32670,
+      "actual_ppm_high": 0.97186,
+      "actual_ppm_low": 0.96889,
+      "bin_n": 12
+    },
+    {
+      "tcn": "TCN000006",
+      "name": "3-Methyl-2-oxovalerate",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "sum",
+      "roi_ppm": {
+        "high": 1.085665,
+        "low": 1.082425
+      },
+      "selector": "bracketed",
+      "slope": 3100.7959168777597,
+      "intercept": 0.0,
+      "bin_start": 32237,
+      "bin_end": 32250,
+      "actual_ppm_high": 1.0858,
+      "actual_ppm_low": 1.08229,
+      "bin_n": 14
+    },
+    {
+      "tcn": "TCN000007",
+      "name": "Methionine",
+      "unit": "uM",
+      "kind": "mlp",
+      "feature": "vector",
+      "roi_ppm": {
+        "high": 2.5,
+        "low": 0.03012
+      },
+      "selector": "mlp_bracketed",
+      "weights_file": "weights/TCN000007.npz",
+      "weights_sha256": "c9a4e51e56a045db6fc206980a568ff6fbf348167618b7c57e8c6cbf38616565",
+      "input_dim": 9149,
+      "hidden_dim": 10,
+      "output_dim": 1,
+      "activation": "tanh",
+      "dtype": "float64",
+      "bin_start": 26999,
+      "bin_end": 36147,
+      "actual_ppm_high": 2.50006,
+      "actual_ppm_low": 0.0301,
+      "bin_n": 9149
+    },
+    {
+      "tcn": "TCN000008",
+      "name": "2-Oxoisocaproate",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "sum",
+      "roi_ppm": {
+        "high": 0.924205,
+        "low": 0.920695
+      },
+      "selector": "bracketed",
+      "slope": 1364.1238986231676,
+      "intercept": 0.0,
+      "bin_start": 32835,
+      "bin_end": 32849,
+      "actual_ppm_high": 0.92434,
+      "actual_ppm_low": 0.92056,
+      "bin_n": 15
+    },
+    {
+      "tcn": "TCN000009",
+      "name": "Creatine",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "max",
+      "roi_ppm": {
+        "high": 3.028,
+        "low": 3.024
+      },
+      "selector": "bracketed",
+      "slope": 7972.5138738207215,
+      "intercept": 0.0,
+      "bin_start": 25043,
+      "bin_end": 25059,
+      "actual_ppm_high": 3.02818,
+      "actual_ppm_low": 3.02386,
+      "bin_n": 17
+    },
+    {
+      "tcn": "TCN000010",
+      "name": "2-Hydroxybutyrate",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "sum",
+      "roi_ppm": {
+        "high": 0.890995,
+        "low": 0.887755
+      },
+      "selector": "bracketed",
+      "slope": 2432.998789184004,
+      "intercept": 0.0,
+      "bin_start": 32958,
+      "bin_end": 32971,
+      "actual_ppm_high": 0.89113,
+      "actual_ppm_low": 0.88762,
+      "bin_n": 14
+    },
+    {
+      "tcn": "TCN000011",
+      "name": "Acetate",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "sum",
+      "roi_ppm": {
+        "high": 1.907815,
+        "low": 1.905115
+      },
+      "selector": "bracketed",
+      "slope": 1687.6736872478318,
+      "intercept": 0.0,
+      "bin_start": 29192,
+      "bin_end": 29203,
+      "actual_ppm_high": 1.90795,
+      "actual_ppm_low": 1.90498,
+      "bin_n": 12
+    },
+    {
+      "tcn": "TCN000012",
+      "name": "Tryptophan",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "sum",
+      "roi_ppm": {
+        "high": 7.736305,
+        "low": 7.730905
+      },
+      "selector": "bracketed",
+      "slope": 10143.873274599722,
+      "intercept": 0.0,
+      "bin_start": 8346,
+      "bin_end": 8367,
+      "actual_ppm_high": 7.73644,
+      "actual_ppm_low": 7.73077,
+      "bin_n": 22
+    },
+    {
+      "tcn": "TCN000013",
+      "name": "Carnitine",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "sum",
+      "roi_ppm": {
+        "high": 4.572,
+        "low": 4.545
+      },
+      "selector": "bracketed",
+      "slope": 11262.75450368815,
+      "intercept": 0.0,
+      "bin_start": 19325,
+      "bin_end": 19426,
+      "actual_ppm_high": 4.57204,
+      "actual_ppm_low": 4.54477,
+      "bin_n": 102
+    },
+    {
+      "tcn": "TCN000014",
+      "name": "Cysteine",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "sum",
+      "roi_ppm": {
+        "high": 3.0095,
+        "low": 3.007
+      },
+      "selector": "bracketed",
+      "slope": 11452.384557399597,
+      "intercept": 0.0,
+      "bin_start": 25112,
+      "bin_end": 25122,
+      "actual_ppm_high": 3.00955,
+      "actual_ppm_low": 3.00685,
+      "bin_n": 11
+    },
+    {
+      "tcn": "TCN000015",
+      "name": "Glutamate",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "sum",
+      "roi_ppm": {
+        "high": 2.342245,
+        "low": 2.341165
+      },
+      "selector": "bracketed",
+      "slope": 18413.46235807436,
+      "intercept": 0.0,
+      "bin_start": 27583,
+      "bin_end": 27588,
+      "actual_ppm_high": 2.34238,
+      "actual_ppm_low": 2.34103,
+      "bin_n": 6
+    },
+    {
+      "tcn": "TCN000016",
+      "name": "Creatinine",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "sum",
+      "roi_ppm": {
+        "high": 3.037225,
+        "low": 3.034255
+      },
+      "selector": "bracketed",
+      "slope": 1575.124936478451,
+      "intercept": 0.0,
+      "bin_start": 25009,
+      "bin_end": 25021,
+      "actual_ppm_high": 3.03736,
+      "actual_ppm_low": 3.03412,
+      "bin_n": 13
+    },
+    {
+      "tcn": "TCN000017",
+      "name": "Asparagine",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "max",
+      "roi_ppm": {
+        "high": 2.86,
+        "low": 2.815
+      },
+      "selector": "bracketed",
+      "slope": 129240.35168170158,
+      "intercept": 0.0,
+      "bin_start": 25665,
+      "bin_end": 25833,
+      "actual_ppm_high": 2.86024,
+      "actual_ppm_low": 2.81488,
+      "bin_n": 169
+    },
+    {
+      "tcn": "TCN000018",
+      "name": "Isoleucine",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "sum",
+      "roi_ppm": {
+        "high": 1.009525,
+        "low": 1.003855
+      },
+      "selector": "bracketed",
+      "slope": 2956.7949430548997,
+      "intercept": 0.0,
+      "bin_start": 32519,
+      "bin_end": 32541,
+      "actual_ppm_high": 1.00966,
+      "actual_ppm_low": 1.00372,
+      "bin_n": 23
+    },
+    {
+      "tcn": "TCN000019",
+      "name": "Phenylalanine",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "sum",
+      "roi_ppm": {
+        "high": 7.421215,
+        "low": 7.415545
+      },
+      "selector": "bracketed",
+      "slope": 5662.54706930967,
+      "intercept": 0.0,
+      "bin_start": 9513,
+      "bin_end": 9535,
+      "actual_ppm_high": 7.42135,
+      "actual_ppm_low": 7.41541,
+      "bin_n": 23
+    },
+    {
+      "tcn": "TCN000020",
+      "name": "Arginine",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "sum",
+      "roi_ppm": {
+        "high": 1.65,
+        "low": 1.645
+      },
+      "selector": "bracketed",
+      "slope": 20555.786460288044,
+      "intercept": 0.0,
+      "bin_start": 30147,
+      "bin_end": 30166,
+      "actual_ppm_high": 1.6501,
+      "actual_ppm_low": 1.64497,
+      "bin_n": 20
+    },
+    {
+      "tcn": "TCN000021",
+      "name": "Ornithine",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "max",
+      "roi_ppm": {
+        "high": 3.047,
+        "low": 3.041
+      },
+      "selector": "bracketed",
+      "slope": 41335.71407647218,
+      "intercept": 0.0,
+      "bin_start": 24973,
+      "bin_end": 24996,
+      "actual_ppm_high": 3.04708,
+      "actual_ppm_low": 3.04087,
+      "bin_n": 24
+    },
+    {
+      "tcn": "TCN000022",
+      "name": "Tyrosine",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "sum",
+      "roi_ppm": {
+        "high": 6.902005,
+        "low": 6.879325
+      },
+      "selector": "bracketed",
+      "slope": 2539.5368263270902,
+      "intercept": 0.0,
+      "bin_start": 11436,
+      "bin_end": 11521,
+      "actual_ppm_high": 6.90214,
+      "actual_ppm_low": 6.87919,
+      "bin_n": 86
+    },
+    {
+      "tcn": "TCN000023",
+      "name": "Pyruvate",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "sum",
+      "roi_ppm": {
+        "high": 2.366005,
+        "low": 2.361415
+      },
+      "selector": "bracketed",
+      "slope": 2358.983099797476,
+      "intercept": 0.0,
+      "bin_start": 27495,
+      "bin_end": 27513,
+      "actual_ppm_high": 2.36614,
+      "actual_ppm_low": 2.36128,
+      "bin_n": 19
+    },
+    {
+      "tcn": "TCN000024",
+      "name": "Glycerol",
+      "unit": "uM",
+      "kind": "mlp",
+      "feature": "vector",
+      "roi_ppm": {
+        "high": 3.565,
+        "low": 3.545
+      },
+      "selector": "mlp_bracketed",
+      "weights_file": "weights/TCN000024.npz",
+      "weights_sha256": "de4bc4a4bced7849de4d26a3e7fa34de4ed671db0e9f651b83efb7697fec83f0",
+      "input_dim": 76,
+      "hidden_dim": 10,
+      "output_dim": 1,
+      "activation": "tanh",
+      "dtype": "float64",
+      "bin_start": 23054,
+      "bin_end": 23129,
+      "actual_ppm_high": 3.56521,
+      "actual_ppm_low": 3.54496,
+      "bin_n": 76
+    },
+    {
+      "tcn": "TCN000025",
+      "name": "Histidine",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "max",
+      "roi_ppm": {
+        "high": 7.08,
+        "low": 7.038
+      },
+      "selector": "bracketed",
+      "slope": 96911.4,
+      "intercept": 0.0,
+      "bin_start": 10777,
+      "bin_end": 10933,
+      "actual_ppm_high": 7.08007,
+      "actual_ppm_low": 7.03795,
+      "bin_n": 157
+    },
+    {
+      "tcn": "TCN000026",
+      "name": "3-Hydroxybutyrate",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "sum",
+      "roi_ppm": {
+        "high": 1.186105,
+        "low": 1.182055
+      },
+      "selector": "bracketed",
+      "slope": 3032.5280749367926,
+      "intercept": 0.0,
+      "bin_start": 31865,
+      "bin_end": 31881,
+      "actual_ppm_high": 1.18624,
+      "actual_ppm_low": 1.18192,
+      "bin_n": 17
+    },
+    {
+      "tcn": "TCN000027",
+      "name": "Leucine",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "sum",
+      "roi_ppm": {
+        "high": 0.964705,
+        "low": 0.958765
+      },
+      "selector": "bracketed",
+      "slope": 2748.0489677352953,
+      "intercept": 0.0,
+      "bin_start": 32685,
+      "bin_end": 32708,
+      "actual_ppm_high": 0.96484,
+      "actual_ppm_low": 0.95863,
+      "bin_n": 24
+    },
+    {
+      "tcn": "TCN000028",
+      "name": "Serine",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "sum",
+      "roi_ppm": {
+        "high": 3.952,
+        "low": 3.943
+      },
+      "selector": "bracketed",
+      "slope": 6322.877544477335,
+      "intercept": 0.0,
+      "bin_start": 21621,
+      "bin_end": 21655,
+      "actual_ppm_high": 3.95212,
+      "actual_ppm_low": 3.94294,
+      "bin_n": 35
+    },
+    {
+      "tcn": "TCN000029",
+      "name": "Lysine",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "sum",
+      "roi_ppm": {
+        "high": 3.018325,
+        "low": 3.014545
+      },
+      "selector": "bracketed",
+      "slope": 4381.487787887117,
+      "intercept": 0.0,
+      "bin_start": 25079,
+      "bin_end": 25094,
+      "actual_ppm_high": 3.01846,
+      "actual_ppm_low": 3.01441,
+      "bin_n": 16
+    },
+    {
+      "tcn": "TCN000030",
+      "name": "Threonine",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "sum",
+      "roi_ppm": {
+        "high": 4.255,
+        "low": 4.22
+      },
+      "selector": "bracketed",
+      "slope": 6575.449332939317,
+      "intercept": 0.0,
+      "bin_start": 20499,
+      "bin_end": 20629,
+      "actual_ppm_high": 4.25506,
+      "actual_ppm_low": 4.21996,
+      "bin_n": 131
+    },
+    {
+      "tcn": "TCN000031",
+      "name": "Proline",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "sum",
+      "roi_ppm": {
+        "high": 2.018785,
+        "low": 2.015005
+      },
+      "selector": "bracketed",
+      "slope": 17082.37263231989,
+      "intercept": 0.0,
+      "bin_start": 28781,
+      "bin_end": 28796,
+      "actual_ppm_high": 2.01892,
+      "actual_ppm_low": 2.01487,
+      "bin_n": 16
+    },
+    {
+      "tcn": "TCN000032",
+      "name": "Valine",
+      "unit": "uM",
+      "kind": "mlp",
+      "feature": "vector",
+      "roi_ppm": {
+        "high": 2.5,
+        "low": 0.03012
+      },
+      "selector": "mlp_bracketed",
+      "weights_file": "weights/TCN000032.npz",
+      "weights_sha256": "24addcd3d711e6e22628e0854ebff4de2233111786d008036c51d73eb33d7e7c",
+      "input_dim": 9149,
+      "hidden_dim": 100,
+      "output_dim": 1,
+      "activation": "tanh",
+      "dtype": "float64",
+      "bin_start": 26999,
+      "bin_end": 36147,
+      "actual_ppm_high": 2.50006,
+      "actual_ppm_low": 0.0301,
+      "bin_n": 9149
+    },
+    {
+      "tcn": "TCN000033",
+      "name": "Glycine",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "sum",
+      "roi_ppm": {
+        "high": 3.549955,
+        "low": 3.545635
+      },
+      "selector": "bracketed",
+      "slope": 2303.8600299069744,
+      "intercept": 0.0,
+      "bin_start": 23110,
+      "bin_end": 23127,
+      "actual_ppm_high": 3.55009,
+      "actual_ppm_low": 3.5455,
+      "bin_n": 18
+    },
+    {
+      "tcn": "TCN000034",
+      "name": "Alanine",
+      "unit": "uM",
+      "kind": "mlp",
+      "feature": "vector",
+      "roi_ppm": {
+        "high": 2.5,
+        "low": 0.03012
+      },
+      "selector": "mlp_bracketed",
+      "weights_file": "weights/TCN000034.npz",
+      "weights_sha256": "2cc2261e0fb827876989eeeb2462b76413568eaa8968809c1f30a36cbfe01187",
+      "input_dim": 9149,
+      "hidden_dim": 100,
+      "output_dim": 1,
+      "activation": "tanh",
+      "dtype": "float64",
+      "bin_start": 26999,
+      "bin_end": 36147,
+      "actual_ppm_high": 2.50006,
+      "actual_ppm_low": 0.0301,
+      "bin_n": 9149
+    },
+    {
+      "tcn": "TCN000035",
+      "name": "Glutamine",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "max",
+      "roi_ppm": {
+        "high": 2.108,
+        "low": 2.096
+      },
+      "selector": "bracketed",
+      "slope": 294155.3367237963,
+      "intercept": 0.0,
+      "bin_start": 28451,
+      "bin_end": 28496,
+      "actual_ppm_high": 2.10802,
+      "actual_ppm_low": 2.09587,
+      "bin_n": 46
+    },
+    {
+      "tcn": "TCN000036",
+      "name": "Lactate",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "sum",
+      "roi_ppm": {
+        "high": 1.325155,
+        "low": 1.314625
+      },
+      "selector": "bracketed",
+      "slope": 2806.9460252582885,
+      "intercept": 0.0,
+      "bin_start": 31350,
+      "bin_end": 31390,
+      "actual_ppm_high": 1.32529,
+      "actual_ppm_low": 1.31449,
+      "bin_n": 41
+    },
+    {
+      "tcn": "TCN000037",
+      "name": "Glucose",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "sum",
+      "roi_ppm": {
+        "high": 5.239,
+        "low": 5.214
+      },
+      "selector": "bracketed",
+      "slope": 12906.580968886592,
+      "intercept": 0.0,
+      "bin_start": 17595,
+      "bin_end": 17689,
+      "actual_ppm_high": 5.23921,
+      "actual_ppm_low": 5.21383,
+      "bin_n": 95
+    },
+    {
+      "tcn": "TCN000038",
+      "name": "3-methyl-2-oxobutyric acid",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "sum",
+      "roi_ppm": {
+        "high": 1.10875,
+        "low": 1.1074
+      },
+      "selector": "bracketed",
+      "slope": 1726.09,
+      "intercept": -1.1868,
+      "bin_start": 32151,
+      "bin_end": 32158,
+      "actual_ppm_high": 1.10902,
+      "actual_ppm_low": 1.10713,
+      "bin_n": 8
+    },
+    {
+      "tcn": "TCN000039",
+      "name": "Betaine",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "max",
+      "roi_ppm": {
+        "high": 3.25795,
+        "low": 3.25525
+      },
+      "selector": "bracketed",
+      "slope": 4724.9,
+      "intercept": -4.3712,
+      "bin_start": 24191,
+      "bin_end": 24203,
+      "actual_ppm_high": 3.25822,
+      "actual_ppm_low": 3.25498,
+      "bin_n": 13
+    },
+    {
+      "tcn": "TCN000040",
+      "name": "Caffeine",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "sum",
+      "roi_ppm": {
+        "high": 7.89601,
+        "low": 7.89331
+      },
+      "selector": "bracketed",
+      "slope": 7751.24,
+      "intercept": 0.3133,
+      "bin_start": 7754,
+      "bin_end": 7766,
+      "actual_ppm_high": 7.89628,
+      "actual_ppm_low": 7.89304,
+      "bin_n": 13
+    },
+    {
+      "tcn": "TCN000041",
+      "name": "Citrate",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "sum",
+      "roi_ppm": {
+        "high": 2.63695,
+        "low": 2.63425
+      },
+      "selector": "bracketed",
+      "slope": 4577.0,
+      "intercept": -6.2976,
+      "bin_start": 26491,
+      "bin_end": 26503,
+      "actual_ppm_high": 2.63722,
+      "actual_ppm_low": 2.63398,
+      "bin_n": 13
+    },
+    {
+      "tcn": "TCN000042",
+      "name": "N,N-Dimethylglycine",
+      "unit": "uM",
+      "kind": "adaptive_linear",
+      "feature": "adjusted_peak_height",
+      "roi_ppm": {
+        "high": 2.96,
+        "low": 2.895
+      },
+      "selector": "v6",
+      "slope": 4274.26198283,
+      "intercept": 0.09181425196680193,
+      "bin_start": 25295,
+      "bin_end": 25537,
+      "actual_ppm_high": 2.96014,
+      "actual_ppm_low": 2.8948,
+      "bin_n": 243
+    },
+    {
+      "tcn": "TCN000043",
+      "name": "Uridine",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "max",
+      "roi_ppm": {
+        "high": 7.87144,
+        "low": 7.86874
+      },
+      "selector": "bracketed",
+      "slope": 34658.09,
+      "intercept": 1.0523,
+      "bin_start": 7845,
+      "bin_end": 7857,
+      "actual_ppm_high": 7.87171,
+      "actual_ppm_low": 7.86847,
+      "bin_n": 13
+    },
+    {
+      "tcn": "TCN000044",
+      "name": "Hypoxanthine",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "sum",
+      "roi_ppm": {
+        "high": 8.18923,
+        "low": 8.18113
+      },
+      "selector": "bracketed",
+      "slope": 5943.58,
+      "intercept": 0.0326,
+      "bin_start": 6668,
+      "bin_end": 6700,
+      "actual_ppm_high": 8.1895,
+      "actual_ppm_low": 8.18086,
+      "bin_n": 33
+    },
+    {
+      "tcn": "TCN000045",
+      "name": "Inosine",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "max",
+      "roi_ppm": {
+        "high": 8.33584,
+        "low": 8.32774
+      },
+      "selector": "bracketed",
+      "slope": 30248.98,
+      "intercept": -0.3083,
+      "bin_start": 6125,
+      "bin_end": 6157,
+      "actual_ppm_high": 8.33611,
+      "actual_ppm_low": 8.32747,
+      "bin_n": 33
+    },
+    {
+      "tcn": "TCN000046",
+      "name": "Acetoacetate",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "max",
+      "roi_ppm": {
+        "high": 2.27129,
+        "low": 2.26929
+      },
+      "selector": "inclusive",
+      "slope": 16442.26,
+      "intercept": -5.319722,
+      "bin_start": 27847,
+      "bin_end": 27853,
+      "actual_ppm_high": 2.2711,
+      "actual_ppm_low": 2.26948,
+      "bin_n": 7
+    },
+    {
+      "tcn": "TCN000047",
+      "name": "Paraxanthine",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "max",
+      "roi_ppm": {
+        "high": 3.32,
+        "low": 3.315
+      },
+      "selector": "inclusive",
+      "slope": 9605.018,
+      "intercept": -4.229689,
+      "bin_start": 23963,
+      "bin_end": 23980,
+      "actual_ppm_high": 3.31978,
+      "actual_ppm_low": 3.31519,
+      "bin_n": 18
+    },
+    {
+      "tcn": "TCN000048",
+      "name": "Hippurate",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "max",
+      "roi_ppm": {
+        "high": 7.55519,
+        "low": 7.55319
+      },
+      "selector": "inclusive",
+      "slope": 85234.44,
+      "intercept": -0.1383509,
+      "bin_start": 9018,
+      "bin_end": 9024,
+      "actual_ppm_high": 7.555,
+      "actual_ppm_low": 7.55338,
+      "bin_n": 7
+    },
+    {
+      "tcn": "TCN000049",
+      "name": "p-Cresyl sulfate",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "max",
+      "roi_ppm": {
+        "high": 2.33428,
+        "low": 2.33212
+      },
+      "selector": "inclusive",
+      "slope": 12225.08,
+      "intercept": -6.370426,
+      "bin_start": 27613,
+      "bin_end": 27621,
+      "actual_ppm_high": 2.33428,
+      "actual_ppm_low": 2.33212,
+      "bin_n": 9
+    },
+    {
+      "tcn": "TCN000050",
+      "name": "Sarcosine",
+      "unit": "uM",
+      "kind": "linear",
+      "feature": "max",
+      "roi_ppm": {
+        "high": 2.72983,
+        "low": 2.72524
+      },
+      "selector": "inclusive",
+      "slope": 7910.959,
+      "intercept": -0.4111907,
+      "bin_start": 26148,
+      "bin_end": 26165,
+      "actual_ppm_high": 2.72983,
+      "actual_ppm_low": 2.72524,
+      "bin_n": 18
+    }
+  ]
+}

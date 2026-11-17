@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "unit": "uM",
+  "rules": [
+    {
+      "tcn": "TCN000030",
+      "reference_batch": "DEMO_A",
+      "target_batches": ["DEMO_B"],
+      "unchanged_batches": ["DEMO_C"]
+    }
+  ]
+}

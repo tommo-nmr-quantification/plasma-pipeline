@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "unit": "uM",
+  "rules": [
+    {
+      "tcn": "TCN000001",
+      "operator": "le",
+      "value": 1,
+      "reason": "operational_low_value_cutoff"
+    },
+    {
+      "tcn": "TCN000013",
+      "operator": "le",
+      "value": 15,
+      "reason": "operational_low_value_cutoff"
+    },
+    {
+      "tcn": "TCN000038",
+      "operator": "le",
+      "value": 1,
+      "reason": "operational_low_value_cutoff"
+    },
+    {
+      "tcn": "TCN000039",
+      "operator": "le",
+      "value": 2.5,
+      "reason": "operational_low_value_cutoff"
+    },
+    {
+      "tcn": "TCN000040",
+      "operator": "le",
+      "value": 2.5,
+      "reason": "operational_low_value_cutoff"
+    },
+    {
+      "tcn": "TCN000041",
+      "operator": "le",
+      "value": 10,
+      "reason": "operational_low_value_cutoff"
+    },
+    {
+      "tcn": "TCN000042",
+      "operator": "le",
+      "value": 0.5,
+      "reason": "operational_low_value_cutoff"
+    },
+    {
+      "tcn": "TCN000043",
+      "operator": "le",
+      "value": 2,
+      "reason": "operational_low_value_cutoff"
+    },
+    {
+      "tcn": "TCN000044",
+      "operator": "le",
+      "value": 2,
+      "reason": "operational_low_value_cutoff"
+    },
+    {
+      "tcn": "TCN000045",
+      "operator": "le",
+      "value": 1.5,
+      "reason": "operational_low_value_cutoff"
+    },
+    {
+      "tcn": "TCN000048",
+      "operator": "le",
+      "value": 3,
+      "reason": "operational_low_value_cutoff"
+    },
+    {
+      "tcn": "TCN000049",
+      "operator": "le",
+      "value": 7,
+      "reason": "operational_low_value_cutoff"
+    }
+  ]
+}

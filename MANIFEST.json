@@ -2,7 +2,7 @@
   "schema_version": 1,
   "release": "50-metabolites-2026-11",
   "files": {
-    ".github/workflows/test.yml": "038fdab74557ef5a0cfb98074fce47bc95f5967430d63dc674d65a056ac09531",
+    ".github/workflows/test.yml": "25996aa0fbe74049582d2e594c41c7f4f5a9214939f37164c372d18f15087ffa",
     ".gitignore": "ad9ca5d3bc08091d61b758c26367a1b2d2d0ed19539c0b9b541822e60c78d6a6",
     "CITATION.cff": "4f36cd2a7df309aa0488744508579e80f317f544d4c4fb2137cc44ee29d9b542",
     "LICENSE": "4d7a30dcf2d036c272d3cb17bcf61a6758a93748926536469bd4445cb6b7e694",
@@ -41,3 +41,4 @@
     "weights/TCN000034.npz": "2cc2261e0fb827876989eeeb2462b76413568eaa8968809c1f30a36cbfe01187"
   }
 }
+
